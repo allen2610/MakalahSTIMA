@@ -1,16 +1,9 @@
-"""
-Problem instance generator for testing different scenarios
-"""
-
 import random
 from study_task import StudyTask, SchedulingProblem
 
 class ProblemGenerator:
-    """Generate various test problems for algorithm evaluation"""
-    
     @staticmethod
     def generate_small_problem(seed=42):
-        """Generate a small problem (3-5 subjects, 1 week)"""
         random.seed(seed)
         
         subjects = ["Math", "Physics", "Chemistry", "English"]
@@ -37,7 +30,6 @@ class ProblemGenerator:
     
     @staticmethod
     def generate_medium_problem(seed=42):
-        """Generate a medium problem (6-8 subjects, 2 weeks)"""
         random.seed(seed)
         
         subjects = ["Math", "Physics", "Chemistry", "Biology", "English", "History", "Geography", "Art"]
@@ -64,7 +56,6 @@ class ProblemGenerator:
     
     @staticmethod
     def generate_large_problem(seed=42):
-        """Generate a large problem (10+ subjects, 3-4 weeks)"""
         random.seed(seed)
         
         subjects = ["Math", "Physics", "Chemistry", "Biology", "English", "History", 
@@ -92,7 +83,6 @@ class ProblemGenerator:
     
     @staticmethod
     def generate_tight_deadlines_problem(seed=42):
-        """Generate a problem with very tight deadlines"""
         random.seed(seed)
         
         subjects = ["Exam1", "Exam2", "Exam3", "Assignment1", "Assignment2"]
@@ -113,13 +103,12 @@ class ProblemGenerator:
         return SchedulingProblem(
             tasks=tasks,
             max_days=7,
-            max_daily_hours=12,  # Long study days needed
+            max_daily_hours=12,  
             min_session_hours=1
         )
     
     @staticmethod
     def generate_dependency_problem(seed=42):
-        """Generate a problem with subject dependencies"""
         random.seed(seed)
         
         tasks = [
@@ -140,7 +129,6 @@ class ProblemGenerator:
     
     @staticmethod
     def generate_balanced_problem(seed=42):
-        """Generate a well-balanced, realistic problem"""
         random.seed(seed)
         
         tasks = [
@@ -160,7 +148,6 @@ class ProblemGenerator:
         )
 
 def test_all_problems():
-    """Test all generated problems"""
     from baseline_algorithms import compare_algorithms
     
     problems = {
@@ -180,8 +167,7 @@ def test_all_problems():
         print(f"Available hours: {problem.max_days * problem.max_daily_hours}")
         print(f"Feasible: {problem.is_feasible()}")
         
-        # Run comparison (without B&B for large problems to save time)
-        include_bnb = len(problem.tasks) <= 6  # Only run B&B for smaller problems
+        include_bnb = len(problem.tasks) <= 6 
         results = compare_algorithms(problem, include_bnb=include_bnb, time_limit=30)
         
         print(f"\nResults:")

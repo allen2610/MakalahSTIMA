@@ -1,16 +1,9 @@
-"""
-Main script to demonstrate the study scheduling system
-"""
-
 from study_task import StudyTask, SchedulingProblem
 from branch_bound_scheduler import BranchAndBoundScheduler
 from baseline_algorithms import compare_algorithms
 import json
 
-def create_sample_problem():
-    """Create a sample scheduling problem for testing"""
-    
-    # Define study tasks
+def create_sample_problem():    
     tasks = [
         StudyTask(
             subject_id=1,
@@ -64,7 +57,6 @@ def create_sample_problem():
         )
     ]
     
-    # Create problem instance
     problem = SchedulingProblem(
         tasks=tasks,
         max_days=14,
@@ -75,7 +67,6 @@ def create_sample_problem():
     return problem
 
 def print_schedule(solution, problem):
-    """Print a formatted schedule"""
     if solution is None:
         print("No solution found!")
         return
@@ -84,7 +75,6 @@ def print_schedule(solution, problem):
     print(f"Total Score: {solution.objective_score:.2f}")
     print(f"=" * 50)
     
-    # Create subject name mapping
     subject_names = {task.subject_id: task.name for task in problem.tasks}
     
     for day in sorted(solution.assignments.keys()):
@@ -96,7 +86,6 @@ def print_schedule(solution, problem):
             daily_total += hours
         print(f"  Total: {daily_total} hours")
     
-    # Check completion status
     print(f"\n=== COMPLETION STATUS ===")
     for task in solution.remaining_tasks:
         completion = task.get_completion_percentage()
@@ -104,7 +93,6 @@ def print_schedule(solution, problem):
         print(f"{task.name}: {status}")
 
 def save_results_to_json(results, filename="scheduling_results.json"):
-    """Save comparison results to JSON file"""
     json_results = {}
     
     for alg_name, result in results.items():
@@ -123,17 +111,14 @@ def save_results_to_json(results, filename="scheduling_results.json"):
     print(f"Results saved to {filename}")
 
 def main():
-    """Main function to run the scheduling system"""
     print("=== Study Scheduling Optimization System ===\n")
     
-    # Create sample problem
     problem = create_sample_problem()
     print(f"Problem created: {problem}")
     print(f"Total required hours: {problem.get_total_required_hours()}")
     print(f"Available hours: {problem.max_days * problem.max_daily_hours}")
     print(f"Problem feasible: {problem.is_feasible()}\n")
     
-    # Option 1: Run just Branch and Bound
     print("Option 1: Branch and Bound only")
     print("-" * 40)
     bnb_scheduler = BranchAndBoundScheduler(problem)
@@ -149,7 +134,6 @@ def main():
     
     print("\n" + "="*60 + "\n")
     
-    # Option 2: Compare all algorithms
     print("Option 2: Algorithm Comparison")
     print("-" * 40)
     results = compare_algorithms(problem, include_bnb=True, time_limit=30)
@@ -162,14 +146,12 @@ def main():
         status = "Success" if result['solution'] else "Failed"
         print(f"{result['algorithm']:<15} {result['score']:<10.2f} {status}")
     
-    # Print best solution
     best_alg = max(results.keys(), key=lambda k: results[k]['score'])
     best_solution = results[best_alg]['solution']
     
     print(f"\n=== BEST SOLUTION ({results[best_alg]['algorithm']}) ===")
     print_schedule(best_solution, problem)
     
-    # Save results
     save_results_to_json(results)
 
 if __name__ == "__main__":

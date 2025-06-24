@@ -1,20 +1,14 @@
-"""
-Results analysis and visualization for algorithm comparison
-"""
-
 import json
 import matplotlib.pyplot as plt
 import pandas as pd
 from study_task import SchedulingProblem
 
 class ResultsAnalyzer:
-    """Analyze and visualize algorithm performance results"""
     
     def __init__(self):
         self.results_data = []
     
     def add_result(self, problem_name, problem, results):
-        """Add a result to the analysis dataset"""
         problem_stats = {
             'name': problem_name,
             'num_subjects': len(problem.tasks),
@@ -32,14 +26,12 @@ class ResultsAnalyzer:
                 'success': result['solution'] is not None
             })
             
-            # Add algorithm-specific statistics
             if 'statistics' in result:
                 result_entry.update(result['statistics'])
             
             self.results_data.append(result_entry)
     
     def generate_comparison_report(self):
-        """Generate a comprehensive comparison report"""
         if not self.results_data:
             print("No results data available!")
             return
@@ -48,7 +40,6 @@ class ResultsAnalyzer:
         
         print("=== ALGORITHM PERFORMANCE ANALYSIS ===\n")
         
-        # Overall performance by algorithm
         print("1. Overall Performance by Algorithm:")
         print("-" * 40)
         alg_summary = df.groupby('algorithm').agg({
@@ -57,13 +48,11 @@ class ResultsAnalyzer:
         }).round(2)
         print(alg_summary)
         
-        # Performance by problem size
         print("\n2. Performance by Problem Size:")
         print("-" * 40)
         size_summary = df.groupby(['num_subjects', 'algorithm'])['score'].mean().unstack()
         print(size_summary.round(2))
         
-        # Success rate analysis
         print("\n3. Success Rate by Algorithm:")
         print("-" * 40)
         success_rate = df.groupby('algorithm')['success'].mean() * 100
@@ -73,18 +62,15 @@ class ResultsAnalyzer:
         return df
     
     def plot_performance_comparison(self, save_path=None):
-        """Create performance comparison plots"""
         if not self.results_data:
             print("No results data available!")
             return
         
         df = pd.DataFrame(self.results_data)
         
-        # Create subplots
         fig, axes = plt.subplots(2, 2, figsize=(15, 12))
         fig.suptitle('Algorithm Performance Comparison', fontsize=16)
         
-        # Plot 1: Score comparison by algorithm
         ax1 = axes[0, 0]
         algorithms = df['algorithm'].unique()
         scores_by_alg = [df[df['algorithm'] == alg]['score'].values for alg in algorithms]
@@ -93,7 +79,6 @@ class ResultsAnalyzer:
         ax1.set_ylabel('Objective Score')
         ax1.tick_params(axis='x', rotation=45)
         
-        # Plot 2: Performance vs problem size
         ax2 = axes[0, 1]
         for alg in algorithms:
             alg_data = df[df['algorithm'] == alg]
@@ -104,7 +89,6 @@ class ResultsAnalyzer:
         ax2.set_ylabel('Objective Score')
         ax2.legend()
         
-        # Plot 3: Success rate by algorithm
         ax3 = axes[1, 0]
         success_rates = df.groupby('algorithm')['success'].mean()
         bars = ax3.bar(success_rates.index, success_rates.values)
@@ -112,13 +96,11 @@ class ResultsAnalyzer:
         ax3.set_ylabel('Success Rate')
         ax3.set_ylim(0, 1.1)
         
-        # Add value labels on bars
         for bar in bars:
             height = bar.get_height()
             ax3.text(bar.get_x() + bar.get_width()/2., height + 0.02,
                     f'{height:.2f}', ha='center', va='bottom')
         
-        # Plot 4: Runtime comparison (if available)
         ax4 = axes[1, 1]
         if 'runtime' in df.columns:
             runtime_data = df.dropna(subset=['runtime'])
@@ -148,7 +130,6 @@ class ResultsAnalyzer:
         plt.show()
     
     def analyze_algorithm_scalability(self):
-        """Analyze how algorithms scale with problem size"""
         if not self.results_data:
             print("No results data available!")
             return
@@ -157,7 +138,6 @@ class ResultsAnalyzer:
         
         print("\n=== SCALABILITY ANALYSIS ===")
         
-        # Group by problem size
         size_groups = df.groupby('num_subjects')
         
         for size, group in size_groups:
@@ -176,7 +156,6 @@ class ResultsAnalyzer:
                     print(f"{alg}: Score={avg_score:.2f}, Success={success_rate:.2f}")
     
     def export_results(self, filename="analysis_results.csv"):
-        """Export results to CSV for further analysis"""
         if not self.results_data:
             print("No results data available!")
             return
@@ -186,7 +165,6 @@ class ResultsAnalyzer:
         print(f"Results exported to {filename}")
     
     def find_best_algorithm_by_scenario(self):
-        """Identify best algorithm for different scenarios"""
         if not self.results_data:
             print("No results data available!")
             return
@@ -223,9 +201,7 @@ class ResultsAnalyzer:
             for alg, row in scenario_summary.iterrows():
                 print(f"    {alg}: {row['score']:.2f} (success: {row['success']:.2f})")
 
-# Example usage function
 def run_comprehensive_analysis():
-    """Run a comprehensive analysis using the problem generator"""
     from problem_generator import ProblemGenerator
     from baseline_algorithms import compare_algorithms
     
@@ -245,13 +221,11 @@ def run_comprehensive_analysis():
     for name, problem in problems.items():
         print(f"\nTesting {name} problem...")
         
-        # Only run B&B for smaller problems to save time
         include_bnb = len(problem.tasks) <= 6
         results = compare_algorithms(problem, include_bnb=include_bnb, time_limit=30)
         
         analyzer.add_result(name, problem, results)
     
-    # Generate analysis
     df = analyzer.generate_comparison_report()
     analyzer.analyze_algorithm_scalability()
     analyzer.find_best_algorithm_by_scenario()
@@ -261,7 +235,6 @@ def run_comprehensive_analysis():
     return analyzer
 
 if __name__ == "__main__":
-    # Check if required libraries are available
     try:
         import matplotlib.pyplot as plt
         import pandas as pd
