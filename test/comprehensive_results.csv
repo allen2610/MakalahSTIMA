@@ -1,0 +1,79 @@
+name,num_subjects,num_days,total_hours,max_daily_hours,feasible,algorithm,score,success,nodes_explored,nodes_pruned,best_score,runtime
+XS_Scale,3,5,8,6,True,Greedy,143.33333333333334,True,,,,
+XS_Scale,3,5,8,6,True,Random,143.4,True,,,,
+XS_Scale,3,5,8,6,True,Round Robin,143.33333333333334,True,,,,
+XS_Scale,3,5,8,6,True,Branch and Bound,143.33333333333334,True,30.0,27.0,143.33333333333334,0.002397298812866211
+S_Scale,4,7,19,8,True,Greedy,170.01666666666665,True,,,,
+S_Scale,4,7,19,8,True,Random,133.68333333333334,True,,,,
+S_Scale,4,7,19,8,True,Round Robin,36.800000000000004,True,,,,
+S_Scale,4,7,19,8,True,Branch and Bound,166.41666666666669,True,315.0,312.0,166.41666666666669,0.030518770217895508
+M_Scale,6,14,32,8,True,Greedy,518.9825396825397,True,,,,
+M_Scale,6,14,32,8,True,Random,518.6553968253968,True,,,,
+M_Scale,6,14,32,8,True,Round Robin,518.5474603174603,True,,,,
+M_Scale,6,14,32,8,True,Branch and Bound,528.4931746031746,True,67.0,60.0,528.4931746031746,0.00586247444152832
+L_Scale,8,21,75,10,True,Greedy,1174.0886247086246,True,,,,
+L_Scale,8,21,75,10,True,Random,1173.326031746032,True,,,,
+L_Scale,8,21,75,10,True,Round Robin,1172.718314463314,True,,,,
+XL_Scale,10,28,109,12,True,Greedy,1525.687193719593,True,,,,
+XL_Scale,10,28,109,12,True,Random,1525.58775190238,True,,,,
+XL_Scale,10,28,109,12,True,Round Robin,1525.583051587215,True,,,,
+Low_Pressure,5,21,18,6,True,Greedy,267.19230769230774,True,,,,
+Low_Pressure,5,21,18,6,True,Random,267.1979420579421,True,,,,
+Low_Pressure,5,21,18,6,True,Round Robin,267.2141591741592,True,,,,
+Low_Pressure,5,21,18,6,True,Branch and Bound,267.19230769230774,True,58.0,54.0,267.19230769230774,0.005661725997924805
+Med_Pressure,5,14,24,8,True,Greedy,317.8855555555556,True,,,,
+Med_Pressure,5,14,24,8,True,Random,317.7033766233766,True,,,,
+Med_Pressure,5,14,24,8,True,Round Robin,317.45578643578654,True,,,,
+Med_Pressure,5,14,24,8,True,Branch and Bound,317.5795670995671,True,59.0,55.0,317.5795670995671,0.0066378116607666016
+High_Pressure,5,10,27,10,True,Greedy,382.3790476190476,True,,,,
+High_Pressure,5,10,27,10,True,Random,382.3457142857142,True,,,,
+High_Pressure,5,10,27,10,True,Round Robin,382.1999999999999,True,,,,
+High_Pressure,5,10,27,10,True,Branch and Bound,382.03999999999996,True,61.0,57.0,382.03999999999996,0.013304471969604492
+Extreme_Pressure,4,6,32,12,True,Greedy,-82.86666666666663,True,,,,
+Extreme_Pressure,4,6,32,12,True,Random,-107.03333333333335,True,,,,
+Extreme_Pressure,4,6,32,12,True,Round Robin,-36.66666666666667,True,,,,
+Extreme_Pressure,4,6,32,12,True,Branch and Bound,-76.86666666666666,True,51.0,48.0,-76.86666666666666,0.0600583553314209
+All_High_Priority,5,14,29,8,True,Greedy,473.10238095238105,True,,,,
+All_High_Priority,5,14,29,8,True,Random,472.46349206349197,True,,,,
+All_High_Priority,5,14,29,8,True,Round Robin,472.74238095238115,True,,,,
+All_High_Priority,5,14,29,8,True,Branch and Bound,472.6180952380952,True,82.0,77.0,472.6180952380952,0.035526275634765625
+Mixed_Priority,6,14,25,8,True,Greedy,305.2890476190476,True,,,,
+Mixed_Priority,6,14,25,8,True,Random,305.19539682539687,True,,,,
+Mixed_Priority,6,14,25,8,True,Round Robin,305.1042857142858,True,,,,
+Mixed_Priority,6,14,25,8,True,Branch and Bound,316.5452380952381,True,71.0,65.0,316.5452380952381,0.005312919616699219
+One_Critical,5,14,29,8,True,Greedy,391.92619047619047,True,,,,
+One_Critical,5,14,29,8,True,Random,391.9069841269842,True,,,,
+One_Critical,5,14,29,8,True,Round Robin,391.79507936507946,True,,,,
+One_Critical,5,14,29,8,True,Branch and Bound,391.44968253968256,True,70.0,65.0,391.44968253968256,0.010721445083618164
+All_Easy,6,14,31,8,True,Greedy,465.2833333333333,True,,,,
+All_Easy,6,14,31,8,True,Random,465.0255555555555,True,,,,
+All_Easy,6,14,31,8,True,Round Robin,465.104126984127,True,,,,
+All_Easy,6,14,31,8,True,Branch and Bound,472.9976190476191,True,58.0,52.0,472.9976190476191,0.0037384033203125
+All_Hard,4,14,24,8,True,Greedy,320.34285714285716,True,,,,
+All_Hard,4,14,24,8,True,Random,320.1638095238095,True,,,,
+All_Hard,4,14,24,8,True,Round Robin,320.1415873015873,True,,,,
+All_Hard,4,14,24,8,True,Branch and Bound,320.13301587301584,True,59.0,55.0,320.13301587301584,0.004998683929443359
+Mixed_Difficulty,5,14,26,8,True,Greedy,339.0,True,,,,
+Mixed_Difficulty,5,14,26,8,True,Random,338.6914285714286,True,,,,
+Mixed_Difficulty,5,14,26,8,True,Round Robin,338.5184126984127,True,,,,
+Mixed_Difficulty,5,14,26,8,True,Branch and Bound,338.4498412698413,True,67.0,62.0,338.4498412698413,0.008678197860717773
+Midterm_Period,5,14,35,10,True,Greedy,551.6128571428571,True,,,,
+Midterm_Period,5,14,35,10,True,Random,547.7657142857144,True,,,,
+Midterm_Period,5,14,35,10,True,Round Robin,548.0053102453104,True,,,,
+Midterm_Period,5,14,35,10,True,Branch and Bound,547.8980952380953,True,74.0,69.0,547.8980952380953,0.022336721420288086
+Final_Period,6,21,79,12,True,Greedy,1293.9388888888886,True,,,,
+Final_Period,6,21,79,12,True,Random,1292.1206726606729,True,,,,
+Final_Period,6,21,79,12,True,Round Robin,1291.9297668997672,True,,,,
+Final_Period,6,21,79,12,True,Branch and Bound,1294.3761904761905,True,109.0,101.0,1294.3761904761905,0.008350372314453125
+Regular_Semester,5,14,22,6,True,Greedy,282.6429292929293,True,,,,
+Regular_Semester,5,14,22,6,True,Random,280.62478632478627,True,,,,
+Regular_Semester,5,14,22,6,True,Round Robin,282.37552447552446,True,,,,
+Regular_Semester,5,14,22,6,True,Branch and Bound,292.24777777777774,True,83.0,75.0,292.24777777777774,0.006582021713256836
+Minimal_Time,2,3,2,2,True,Greedy,21.0,True,,,,
+Minimal_Time,2,3,2,2,True,Random,21.0,True,,,,
+Minimal_Time,2,3,2,2,True,Round Robin,21.0,True,,,,
+Minimal_Time,2,3,2,2,True,Branch and Bound,22.200000000000003,True,8.0,5.0,22.200000000000003,0.0
+Single_Large_Task,1,21,60,8,True,Greedy,1132.3246735239304,True,,,,
+Single_Large_Task,1,21,60,8,True,Random,1132.32467352393,True,,,,
+Single_Large_Task,1,21,60,8,True,Round Robin,1132.3246735239293,True,,,,
+Single_Large_Task,1,21,60,8,True,Branch and Bound,1181.4405448902662,True,62019.0,46856.0,1181.4405448902662,49.193018198013306
